@@ -1,0 +1,11 @@
+node -version
+npm -version
+npm install  --------para el node_modules
+npm install -g @angular/cli
+ng new Cliente
+cd Cliente
+ng serve -o
+ng serve
+ng g c Navbar --skip-tests
+ng g service MetodosApiPasajeros --skip-tests
+npm install sweetalert2
