@@ -1,0 +1,12 @@
+$ git config user.name "josueSoP"
+$ git config user.email "josue.soto.plaza@gmail.com"
+$ git remote add origin "https://github.com/josueSoP/reservaVuelos.git"
+$ git add .
+$ git commit -m "prueba de 1er commit"
+$ git push -u origin master
+$ git pull origin master
+$ git branch
+ $ git branch Rama1
+$ git branch -m Rama1 ramaCambios
+$ git diff master ramaCambios
+$ git merge ramaCambios master
