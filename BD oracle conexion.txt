@@ -1,0 +1,120 @@
+DB:
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=SYSTEM
+spring.datasource.password=admin
+spring.jpa.hibernate.ddl-auto=update
+
+Models:
+@Table(name = "t_alumnos")
+@Entity
+	@Column(name = "id_t_usuarios")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQUE1")
+	@SequenceGenerator(sequenceName = "customer_seque1",allocationSize = 1, name = "CUST_SEQUE1")
+	private Long id;
+
+	@NotNull(message = "Se requiere si es activo requerido")
+	@NotEmpty(message = "El nombre es requerido")
+	@Column(name="nombre")
+
+Repositorio DAO:
+public interface IPasajerosDao extends CrudRepository<Pasajero, Long>{	}
+
+services:
+public interface IService<T, S> {
+//public interface IService<T> {
+	List<T> listar();
+	Optional<T> getById(Long id);
+	void guardar(S t);
+	void eliminar(Long id);
+}
+
+@Service
+public class PasajerosService implements IService<Pasajero, Pasajero>{
+	@Autowired
+	private IPasajerosDao pasajerosDao;
+	@Override
+	public List<Pasajero> listar() {
+		List<Pasajero> pasajeros= new ArrayList<>();
+		pasajeros = (List<Pasajero>) pasajerosDao.findAll();
+		return pasajeros;
+	}
+
+	@Override
+	public Optional<Pasajero> getById(Long id) {
+		Optional<Pasajero> pasajero = pasajerosDao.findById(id);
+		return pasajero;
+	}
+
+	@Override
+	public void guardar(Pasajero t) {
+		this.pasajerosDao.save(t);
+		
+	}
+
+	@Override
+	public void eliminar(Long id) {
+		this.pasajerosDao.deleteById(id);		
+	}
+
+
+Controllers:
+@RestController
+@RequestMapping("api/pasajeros")
+@CrossOrigin(origins = "*")
+public class PasajerosController {
+	//inyectar la dependencia
+	@Autowired
+	IService<Pasajero, Pasajero> pasajerosService;
+	
+	
+	@PostMapping
+	public Map<String, String> guardar(@RequestBody Pasajero c){
+		pasajerosService.guardar(c);
+		Map<String, String> respuesta = new HashMap<>();
+		respuesta.put("msg", "Pasajero guardado correctamente");
+		return respuesta;
+	}
+	
+	@GetMapping
+	public List<Pasajero> listar(){
+		return pasajerosService.listar();
+	}
+	
+	@GetMapping("/obtener/{id}")
+	public Pasajero obtenerPorId(@PathVariable(name = "id") Long id) {
+		Optional<Pasajero> pasajero = pasajerosService.getById(id);
+		if (pasajero.isPresent()) {
+			return pasajero.get();
+		} else {
+			return null;
+		}
+	}
+	
+	
+	@DeleteMapping("/eliminar")
+    public Map<String,String> eliminar(@RequestParam(name = "id") Long id ) {
+        pasajerosService.eliminar(id);
+        Map<String,String> respuesta = new HashMap<>();
+        respuesta.put("msg", "Pasajero eliminado correctamente");
+        return respuesta;
+    }	
+	
+	@PutMapping("/actualizar/{id}")
+	public Map<String, String> actualizar(@RequestBody Pasajero c, @PathVariable(name = "id") Long id){
+		Optional<Pasajero> pasajero = pasajerosService.getById(id);
+		if (pasajero.isPresent()) {
+			c.setId(id);
+			pasajerosService.guardar(c);
+		} else {
+			throw new RuntimeException("El pasajero no existe en la bd");
+		}
+		Map<String, String> respuesta = new HashMap<>();
+		respuesta.put("msg", "Pasajero actualizado correctamente");
+		return respuesta;
+	}
+}
+
+
+JSP:
+
