@@ -21,6 +21,11 @@ Models:
 	@NotEmpty(message = "El nombre es requerido")
 	@Column(name="nombre")
 
+//3
+	@JoinColumn(name = "vuelo_id")
+	@ManyToOne
+	private Vuelo vuelo;  
+
 Repositorio DAO:
 public interface IPasajerosDao extends CrudRepository<Pasajero, Long>{	}
 
