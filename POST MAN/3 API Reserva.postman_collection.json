@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "de5faeae-0291-4336-8812-77523916f451",
+		"name": "3 API Reserva",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15565216",
+		"_collection_link": "https://restless-resonance-515601.postman.co/workspace/TR~e2ec7e58-aa48-4929-9a52-bf9827ad853d/collection/15565216-de5faeae-0291-4336-8812-77523916f451?action=share&source=collection_link&creator=15565216"
+	},
+	"item": [
+		{
+			"name": "api/reservas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": 1,\r\n\"fechaReserva\": \"2023-10-07\",\r\n\"formaPago\": \"Trajeta Credito\",\r\n\"codigo\": \"Desc20\",\r\n\"numAsiento\": \"C23\",\r\n\"montoParcial\": 100.30,\r\n\"total\": 90.15,\r\n\"pasajeroId\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reservas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservas"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/reservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reservas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/reservas/obtener/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reservas/obtener/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservas",
+						"obtener",
+						"2"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/reservas/eliminar?id=2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reservas/eliminar?id=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservas",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/reservas/actualizar/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idLong\": 1,\r\n    \"nombre\": \"Agua\",\r\n    \"descripcion\": \"descripcion del agua\",\r\n    \"stock\": 14,\r\n    \"precio\": 11.0,\r\n    \"categoria\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reservas/actualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reservas",
+						"actualizar",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

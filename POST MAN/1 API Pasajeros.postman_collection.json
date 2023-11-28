@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "7bd989c1-a4ae-4235-8a6f-930b8ea2fcdf",
+		"name": "1 API Pasajeros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15565216",
+		"_collection_link": "https://restless-resonance-515601.postman.co/workspace/TR~e2ec7e58-aa48-4929-9a52-bf9827ad853d/collection/15565216-7bd989c1-a4ae-4235-8a6f-930b8ea2fcdf?action=share&source=collection_link&creator=15565216"
+	},
+	"item": [
+		{
+			"name": "api/pasajeros",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\": \"MArio\",\r\n    \"apPaterno\": \"Soto\",\r\n    \"apMaterno\": \"Plaza\",\r\n    \"telefono\": \"55 5555 3333\",\r\n    \"correo\": \"j@mail.com\",\r\n    \"fechaNacimiento\": \"2023-10-07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/pasajeros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pasajeros"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/pasajeros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pasajeros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pasajeros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/pasajeros/obtener/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pasajeros/obtener/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pasajeros",
+						"obtener",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/pasajeros/eliminar?id=2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/pasajeros/eliminar?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pasajeros",
+						"eliminar"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/pasajeros/actualizar/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Josue\",\r\n    \"apPaterno\": \"Soto\",\r\n    \"apMaterno\": \"Plaza\",\r\n    \"telefono\": \"55 5555 3333\",\r\n    \"correo\": \"j@mail.com\",\r\n    \"fechaNacimiento\": \"2023-10-07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/pasajeros/actualizar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"pasajeros",
+						"actualizar",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
